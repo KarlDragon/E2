@@ -22,9 +22,36 @@ void nhapthongtin(){
 
 }
 
+//TODO : Xoa 1 nv theo id roi ghi ds ra DSNV_XOA.txt
+void xoaNhanVien(){
+	int id, i = 1;
+	string line;
+	cout << "Nhap ma so nhan vien can xoa: ";
+	cin >> id;
+	
+	freopen("DSNV.txt", "r", stdin);
+	freopen("DSNV_XOA.txt","w",stdout);
+	while(getline(cin, line)){
+		if ( id == i ){
+			i++;
+			continue;
+		}
+		else{
+			if (line == ""){
+				break;
+			}
+			cout << line << endl;
+		}
+		i++;
+	}
+	fclose(stdin);
+	fclose(stdout);
+	
+}
 int main(){
 	// Truong nhom da lam 1 DSNV r, nen se tam comment func, tranh nhap di nhap lai
 //	nhapthongtin();
-	
+
+	xoaNhanVien();
 	return 0;
 }
