@@ -37,9 +37,6 @@ void xoaNhanVien(){
 			continue;
 		}
 		else{
-			if (line == ""){
-				break;
-			}
 			cout << line << endl;
 		}
 		i++;
