@@ -94,7 +94,7 @@ int main(){
 
 	// Truong nhom da lam 1 DSNV r, nen se tam comment func, tranh nhap di nhap lai
 //	nhapthongtin();
-//  themNhanVien()
+  themNhanVien();
 //  xoaNhanVien();
 //	suaNhanVien();
 	return 0;
