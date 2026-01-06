@@ -69,7 +69,7 @@ void suaNhanVien(){
 	string line,sua;
 	cout << "Nhap ma so nhan vien can sua: ";
 	cin >> id;
-	cout <<"Sua thong tin thanh vien või ma "<<id<<": ";
+	cout <<"Sua thong tin thanh vien vÃµi ma "<<id<<": ";
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	getline(cin,sua);
 	freopen("DSNV.txt", "r", stdin);
@@ -94,7 +94,7 @@ int main(){
 
 	// Truong nhom da lam 1 DSNV r, nen se tam comment func, tranh nhap di nhap lai
 //	nhapthongtin();
-  themNhanVien();
+  // themNhanVien();
 //  xoaNhanVien();
 //	suaNhanVien();
 	return 0;
