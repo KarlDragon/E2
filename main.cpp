@@ -22,6 +22,51 @@ void nhapthongtin(){
 
 }
 
+// TODO : Sap xep danh sach nhan vien giam dan theo thuc linh roi ghi ra file DSNV_SAPXEP.txt
+struct DongNhanVien {
+    string noiDung;
+    double thucLinh;
+};
+
+void sapXepNhanVien() {
+    vector<DongNhanVien> ds;
+    string line;
+
+    if (freopen("DSNV.txt", "r", stdin) == NULL) {
+        cout << "Khong the mo file DSNV.txt!" << endl;
+        return;
+    }
+
+    while (getline(cin, line)) {
+        if (line.empty()) continue;
+        
+        DongNhanVien temp;
+        temp.noiDung = line;
+        
+        size_t lastSpace = line.find_last_of(' ');
+        if (lastSpace != string::npos) {
+            temp.thucLinh = stod(line.substr(lastSpace + 1));
+        } else {
+            temp.thucLinh = 0;
+        }
+        ds.push_back(temp);
+    }
+
+
+    // Sap xep danh sach theo thuc linh
+    sort(ds.begin(), ds.end(), [](const DongNhanVien &a, const DongNhanVien &b) {
+        return a.thucLinh > b.thucLinh;
+    });
+
+    freopen("DSNV_SAPXEP.txt", "w", stdout);
+    for (const auto &nv : ds) {
+        cout << nv.noiDung << endl;
+    }
+    
+	fclose(stdin);
+    fclose(stdout);
+}
+
 //TODO : Xoa 1 nv theo id roi ghi ds ra DSNV_XOA.txt
 void xoaNhanVien(){
 	int id, i = 1;
