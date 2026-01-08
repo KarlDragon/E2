@@ -21,47 +21,59 @@ void nhapthongtin(){
 	fclose(stdout);
 
 }
-//TODO : T?m thông tin nhân viên theo tên nhân viên ( không phân bi?t hoa thı?ng), r?i xu?t thông tin nhân viên ğó ra màn h?nh.
-    struct NhanVien {
-		char ma[20];
-		char ten[50];
-		int tuoi;
-	};
-void timthongtinNVtheotenNV(char s[]) {
-    for (int i = 0; s[i]; i++)
+//TODO : TÃ¬m thÃ´ng tin nhÃ¢n viÃªn theo tÃªn nhÃ¢n viÃªn ( khÃ´ng phÃ¢n biá»‡t hoa thÆ°á»ng), rá»“i xuáº¥t thÃ´ng tin nhÃ¢n viÃªn Ä‘Ã³ ra mÃ n hÃ¬nh.
+struct NhanVien {
+    int STT;
+    string ten;
+    string ngaySinh;
+    string email;
+    string sdt;
+    int tuoi;
+    int luong;
+    int tongLuong;
+};
+
+string toLower(string s) {
+    for (int i = 0; i < s.length(); i++)
         if (s[i] >= 'A' && s[i] <= 'Z')
             s[i] += 32;
+    return s;
 }
+
 int main() {
-    int n;
-    cin >> n;
-    cin.ignore();
+    NhanVien ds[] = {
+        {DSNV.txt}
+    };
 
-    NhanVien a[100];
+    int n = 10;
+    string tenTim;
+    cout << "Nhap ten nhan vien: ";
+    getline(cin, tenTim);
 
-    for (int i = 0; i < n; i++) {
-        cin.getline(a[i].ma, 20);
-        cin.getline(a[i].ten, 50);
-        cin >> a[i].tuoi;
-        cin.ignore();
-    }
-
-    char t[50];
-    cin.getline(t, 50);
-    timthongtinNVtheotenNV(t);
+    tenTim = toLower(tenTim);
+    bool timThay = false;
 
     for (int i = 0; i < n; i++) {
-        char x[50];
-        strcpy(x, a[i].ten);
-        timthongtinNVtheotenNV(x);
-
-        if (strcmp(x, t) == 0)
-            cout << a[i].ma << "\n"
-                 << a[i].ten << "\n"
-                 << a[i].tuoi << endl;
+        if (toLower(ds[i].ten) == tenTim) {
+            cout << "\nSTT: " << ds[i].STT << endl;
+            cout << "Ten: " << ds[i].ten << endl;
+            cout << "Ngay sinh: " << ds[i].ngaySinh << endl;
+            cout << "Email: " << ds[i].email << endl;
+            cout << "SDT: " << ds[i].sdt << endl;
+            cout << "Tuoi: " << ds[i].tuoi << endl;
+            cout << "Luong: " << ds[i].luong << endl;
+            cout << "Tong luong: " << ds[i].tongLuong << endl;
+            timThay = true;
+            break;
+        }
     }
-    fclose(stdout);
+
+    if (!timThay)
+        cout << "\nKhong tim thay nhan vien";
+
+   fclose(stdout);
 }
+
 //TODO : Xoa 1 nv theo id roi ghi ds ra DSNV_XOA.txt
 void xoaNhanVien(){
 	int id, i = 1;
