@@ -1,4 +1,4 @@
-﻿#include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 // TODO : nhap ds thong tin roi xuat ra file DSNV.txt
@@ -141,12 +141,12 @@ void timNhanVienTheoid()
 }
 int main() {
 	 // Truong nhom da lam 1 DSNV r, nen se tam comment func, tranh nhap di nhap lai
-//     nhapthongtin();
+    // nhapthongtin();
   // themNhanVien();
 //  xoaNhanVien();
-//     suaNhanVien();
+    //suaNhanVien();
 	// docDanhSachNhanVien();
-	//timNhanVienTheoid();
+//timNhanVienTheoid();
 	return 0;
 
 }
