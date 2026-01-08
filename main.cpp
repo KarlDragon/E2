@@ -109,7 +109,12 @@ void docDanhSachNhanVien() {
 	
 }
 int main() {
-	docDanhSachNhanVien();
+	 // Truong nhom da lam 1 DSNV r, nen se tam comment func, tranh nhap di nhap lai
+//     nhapthongtin();
+  // themNhanVien();
+//  xoaNhanVien();
+//     suaNhanVien();
+	// docDanhSachNhanVien();
 	return 0;
 
 }
