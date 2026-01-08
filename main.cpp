@@ -99,10 +99,10 @@ void docDanhSachNhanVien() {
 		return;
 	}
 	string line;
-	int count = 0;                    // count BẮT ĐẦU = 0
-	while (getline(fin, line)) {     // Đọc dòng ĐẦU TIÊN
-			cout << line << endl;         // In dòng ĐẦU TIÊN
-			count++;                      // count TĂNG LÊN 1
+	int count = 0;                    
+	while (getline(fin, line)) {     
+			cout << line << endl;         
+			count++;                      
 	}
 	fin.close();
 
