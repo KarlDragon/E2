@@ -21,7 +21,47 @@ void nhapthongtin(){
 	fclose(stdout);
 
 }
+//TODO : T?m thông tin nhân viên theo tên nhân viên ( không phân bi?t hoa thý?ng), r?i xu?t thông tin nhân viên ðó ra màn h?nh.
+    struct NhanVien {
+		char ma[20];
+		char ten[50];
+		int tuoi;
+	};
+void timthongtinNVtheotenNV(char s[]) {
+    for (int i = 0; s[i]; i++)
+        if (s[i] >= 'A' && s[i] <= 'Z')
+            s[i] += 32;
+}
+int main() {
+    int n;
+    cin >> n;
+    cin.ignore();
 
+    NhanVien a[100];
+
+    for (int i = 0; i < n; i++) {
+        cin.getline(a[i].ma, 20);
+        cin.getline(a[i].ten, 50);
+        cin >> a[i].tuoi;
+        cin.ignore();
+    }
+
+    char t[50];
+    cin.getline(t, 50);
+    timthongtinNVtheotenNV(t);
+
+    for (int i = 0; i < n; i++) {
+        char x[50];
+        strcpy(x, a[i].ten);
+        timthongtinNVtheotenNV(x);
+
+        if (strcmp(x, t) == 0)
+            cout << a[i].ma << "\n"
+                 << a[i].ten << "\n"
+                 << a[i].tuoi << endl;
+    }
+    fclose(stdout);
+}
 //TODO : Xoa 1 nv theo id roi ghi ds ra DSNV_XOA.txt
 void xoaNhanVien(){
 	int id, i = 1;
