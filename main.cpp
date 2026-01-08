@@ -99,17 +99,22 @@ void docDanhSachNhanVien() {
 		return;
 	}
 	string line;
-	int count = 0;                    // count BẮT ĐẦU = 0
-	while (getline(fin, line)) {     // Đọc dòng ĐẦU TIÊN
-			cout << line << endl;         // In dòng ĐẦU TIÊN
-			count++;                      // count TĂNG LÊN 1
+	int count = 0;                    
+	while (getline(fin, line)) {    
+			cout << line << endl;        
+			count++;                      
 	}
 	fin.close();
 
 	
 }
 int main() {
-	docDanhSachNhanVien();
+	 // Truong nhom da lam 1 DSNV r, nen se tam comment func, tranh nhap di nhap lai
+//     nhapthongtin();
+  // themNhanVien();
+//  xoaNhanVien();
+//     suaNhanVien();
+	// docDanhSachNhanVien();
 	return 0;
 
 }
