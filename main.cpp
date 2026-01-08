@@ -1,4 +1,4 @@
-﻿#include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 // TODO : nhap ds thong tin roi xuat ra file DSNV.txt
@@ -91,32 +91,41 @@ void suaNhanVien(){
 
 }
 
-//TODO: Doc danh sach nhan vien (cau2)
-void docDanhSachNhanVien() {
-	ifstream fin("DSNV.txt");
-	if (!fin) {
-		cout << "Khong mo duoc file DSNV.txt" << endl;
-		return;
-	}
+void xuatNhanvienthuclinhthapnhat() {
+	ifstream fin("DSNV.txt")
+	vector<string>ds;
+	vector<double> thuclinh;
 	string line;
-	int count = 0;                    
-	while (getline(fin, line)) {    
-			cout << line << endl;        
-			count++;                      
+	double minTL = DBL_MAX;
+	while (getline(fin, line)) {
+		ds.push_back(line);
+		stringstream ss(line);
+		string temp;
+		double tl = 0;
+		while (ss >> temp) {
+			if (stringstream(temp) >> tl) {
+
+			}
+		}
+		thuclinh.push_back(tl);
+		minTL = min(minTL, tl);
 	}
 	fin.close();
 
-	
+	cout << "\nNhan vien co thuc linh thap nhat (" << minTL << "):\n";
+	for (size_t i = 0; i < ds.size(); i++){
+		if (thuclinh[i] == minTL) {
+			cout << ds[i] << endl;
+		}
+	}
 }
-int main() {
-	 // Truong nhom da lam 1 DSNV r, nen se tam comment func, tranh nhap di nhap lai
-//     nhapthongtin();
+
+int main(){
+
+	// Truong nhom da lam 1 DSNV r, nen se tam comment func, tranh nhap di nhap lai
+//	nhapthongtin();
   // themNhanVien();
 //  xoaNhanVien();
-//     suaNhanVien();
-	// docDanhSachNhanVien();
+//	suaNhanVien();
 	return 0;
-
 }
-
-
