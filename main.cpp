@@ -166,6 +166,7 @@ int main() {
 //  xoaNhanVien();
 //     suaNhanVien();
 	// docDanhSachNhanVien();
+	sapXepNhanVien();
 	return 0;
 
 }
