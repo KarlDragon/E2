@@ -99,10 +99,10 @@ void docDanhSachNhanVien() {
 		return;
 	}
 	string line;
-	int count = 0;                    
-	while (getline(fin, line)) {    
-			cout << line << endl;        
-			count++;                      
+                   
+	while (getline(fin, line)) {     
+			cout << line << endl;         
+                    
 	}
 	fin.close();
 
