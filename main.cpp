@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+﻿#include <bits/stdc++.h>
 using namespace std;
 
 // TODO : nhap ds thong tin roi xuat ra file DSNV.txt
@@ -90,12 +90,33 @@ void suaNhanVien(){
 	fclose(stdout);
 
 }
-int main(){
 
-	// Truong nhom da lam 1 DSNV r, nen se tam comment func, tranh nhap di nhap lai
-//	nhapthongtin();
+//TODO: Doc danh sach nhan vien (cau2)
+void docDanhSachNhanVien() {
+	ifstream fin("DSNV.txt");
+	if (!fin) {
+		cout << "Khong mo duoc file DSNV.txt" << endl;
+		return;
+	}
+	string line;
+	int count = 0;                    
+	while (getline(fin, line)) {    
+			cout << line << endl;        
+			count++;                      
+	}
+	fin.close();
+
+	
+}
+int main() {
+	 // Truong nhom da lam 1 DSNV r, nen se tam comment func, tranh nhap di nhap lai
+//     nhapthongtin();
   // themNhanVien();
 //  xoaNhanVien();
-//	suaNhanVien();
+//     suaNhanVien();
+	// docDanhSachNhanVien();
 	return 0;
+
 }
+
+
