@@ -22,6 +22,57 @@ void nhapthongtin(){
 
 }
 
+
+// TODO : Sap xep danh sach nhan vien giam dan theo thuc linh roi ghi ra file DSNV_SAPXEP.txt
+void sapXepNhanVien() {
+	string dsNoiDung[1000];
+	double dsThucLinh[1000];
+	int count = 0;
+	string line;
+
+	if (freopen("DSNV.txt", "r", stdin) == NULL) return;
+
+	while (getline(cin, line) && count < 1000) {
+		if (line.empty()) continue;
+
+		dsNoiDung[count] = line;
+
+		size_t pos = line.find_last_of(' ');
+		if (pos != string::npos) {
+			dsThucLinh[count] = stod(line.substr(pos + 1));
+		}
+		else {
+			dsThucLinh[count] = 0;
+		}
+		count++;
+	}
+	fclose(stdin);
+
+	for (int i = 0; i < count - 1; i++) {
+		for (int j = i + 1; j < count; j++) {
+			if (dsThucLinh[i] < dsThucLinh[j]) { 
+		
+				double tempLuong = dsThucLinh[i];
+				dsThucLinh[i] = dsThucLinh[j];
+				dsThucLinh[j] = tempLuong;
+
+			
+				string tempNoiDung = dsNoiDung[i];
+				dsNoiDung[i] = dsNoiDung[j];
+				dsNoiDung[j] = tempNoiDung;
+			}
+		}
+	}
+
+
+	if (freopen("DSNV_SAPXEP.txt", "w", stdout) != NULL) {
+		for (int i = 0; i < count; i++) {
+			cout << dsNoiDung[i] << endl;
+		}
+		fclose(stdout);
+	}
+}
+
 //TODO : Xoa 1 nv theo id roi ghi ds ra DSNV_XOA.txt
 void xoaNhanVien(){
 	int id, i = 1;
@@ -115,6 +166,7 @@ int main() {
 //  xoaNhanVien();
 //     suaNhanVien();
 	// docDanhSachNhanVien();
+	sapXepNhanVien();
 	return 0;
 
 }
