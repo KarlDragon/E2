@@ -3,24 +3,64 @@ using namespace std;
 
 // TODO : nhap ds thong tin roi xuat ra file DSNV.txt
 void nhapthongtin(){
-	int n, i;
+	int n, i, arrSize, soNgaycong, luongNgay, thucLinh;
 	cout << "Nhap so luong nhan vien can quan li: ";
 	cin>>n;
-	vector<string> arr(n);
+	vector<vector<string>> arr(n);
+	vector<int> thuclinh(n);
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	for (i = 0; i<n ; i++){
+
+	string line, row;
+	i = 0;
+	while(i < n){
 		cout << "Nhap thong tin nhan vien thu " << i + 1 << ": ";
-		getline(cin, arr[i]);
+
+		getline(cin, line);
+		arr[i].clear();
+		stringstream ss(line);
+		while (ss >> row) {
+			arr[i].push_back(row);
+		}
+
+		arrSize = arr[i].size();
+
+		if (arrSize < 7) {
+			cout << "Thong tin nhan vien khong du. Vui long nhap lai." << endl;
+			continue;
+		}
+		try{
+			soNgaycong = stoi(arr[i][arrSize - 2]);
+			luongNgay = stoi(arr[i][arrSize - 1]);
+			thucLinh = soNgaycong * luongNgay;
+			arr[i].push_back(to_string(thucLinh));
+			i++;
+		}
+		catch (invalid_argument&) {
+			cout << "So ngay cong hoac luong ngay khong hop le. Vui long nhap lai." << endl;
+			continue;
+		}
+	}
+		
+
+
+	ofstream fout("DSNV.txt");
+	if (!fout) {
+		cout << "Khong the mo file DSNV.txt de ghi." << endl;
+		return;
+	}
+	for (int i = 0; i < n; i++) {
+		fout << i + 1 << " ";
+
+		for (int j = 0; j < arr[i].size(); j++) {
+			fout << arr[i][j] << " ";
+		}
+
+		fout << endl;
 	}
 
-	freopen("DSNV.txt","w",stdout);
-	for (i = 0; i < n ; i++){
-		cout << i + 1 <<" " ;
-		cout << arr[i] << endl;
-	}
-	fclose(stdout);
-
+	fout.close();
 }
+
 //TODO : tim thong tin theo ten nhan vien (khong phan biet hoa thuong) roi xuat ra man hinh
 void timNhanVienTheoTen() {
     ifstream f("DSNV.txt");
@@ -137,20 +177,20 @@ void xoaNhanVien(){
 	cout << "Nhap ma so nhan vien can xoa: ";
 	cin >> id;
 
-	freopen("DSNV.txt", "r", stdin);
-	freopen("DSNV_XOA.txt","w",stdout);
-	while(getline(cin, line)){
+	ifstream fin("DSNV.txt");
+	ofstream fout("DSNV_XOA.txt");
+	while(getline(fin, line)){
 		if ( id == i ){
 			i++;
 			continue;
 		}
 		else{
-			cout << line << endl;
+			fout << line << endl;
 		}
 		i++;
 	}
-	fclose(stdin);
-	fclose(stdout);
+	fin.close();
+	fout.close();
 
 }
 // TODO : Them thong tin cua 1 nhan vien roi ghi ds ra DSNV_THEM.txt
