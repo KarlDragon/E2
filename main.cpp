@@ -269,24 +269,81 @@ void xuatNhanvienthuclinhthapnhat() {
 	}
 	fin.close();
 
-	cout << "\nNhan vien co thuc linh thap nhat (" << minTL << "):\n";
+	cout << "\nNhan vien co thuc linh thap nhat:\n";
 	for (size_t i = 0; i < ds.size(); i++){
 		if (thuclinh[i] == minTL) {
 			cout << ds[i] << endl;
 		}
 	}
 }
-int main() {
-	 // Truong nhom da lam 1 DSNV r, nen se tam comment func, tranh nhap di nhap lai
-//     nhapthongtin();
-  // themNhanVien();
-//  xoaNhanVien();
-//     suaNhanVien();
-	// docDanhSachNhanVien();
-	// sapXepNhanVien();
-	// timNhanVienTheoid();
-	// xuatNhanvienthuclinhthapnhat();
-	 timNhanVienTheoTen();
-	return 0;
 
+void UI(){
+	cout << "===== CHUONG TRINH QUAN LI NHAN VIEN =====\n";
+	cout << "1. Nhap danh sach nhan vien va luu vao file DSNV.txt\n";
+	cout << "2. Doc danh sach nhan vien tu file DSNV.txt\n";
+	cout << "3. Tim nhan vien theo ma so\n";
+	cout << "4. Tim nhan vien theo ten\n";
+	cout << "5. Xuat nhan vien co thuc linh thap nhat\n";
+	cout << "6. Sap xep danh sach nhan vien giam dan theo thuc linh va luu vao file DSNV_SAPXEP.txt\n";
+	cout << "7. Xoa nhan vien theo ma so va luu vao file DSNV_XOA.txt\n";
+	cout << "8. Them nhan vien moi va luu vao file DSNV_THEM.txt\n";
+	cout << "9. Sua thong tin nhan vien va luu vao file DSNV_SUA.txt\n";
+	cout << "0. Thoat chuong trinh\n";
+	cout << "===========================================\n";
+
+	int option;
+	while (true) {
+		cout << "Chon chuc nang (0-9): ";
+		cin >> option;
+
+		if (option == 0) {
+			cout << "Thoat chuong trinh.\n";
+			return;
+		}
+		else if (option == 1) {
+			nhapthongtin();
+			cout << "===========================================\n";
+		}
+		else if (option == 2) {
+			docDanhSachNhanVien();
+			cout << "===========================================\n";
+		}
+		else if (option == 3) {
+			timNhanVienTheoid();
+			cout << "===========================================\n";
+		}
+		else if (option == 4) {
+			timNhanVienTheoTen();
+			cout << "===========================================\n";
+		}
+		else if (option == 5) {
+			xuatNhanvienthuclinhthapnhat();
+			cout << "===========================================\n";
+		}
+		else if (option == 6) {
+			sapXepNhanVien();
+			cout << "===========================================\n";
+		}
+		else if (option == 7) {
+			xoaNhanVien();
+			cout << "===========================================\n";
+		}
+		else if (option == 8) {
+			themNhanVien();
+			cout << "===========================================\n";
+		}
+		else if (option == 9) {
+			suaNhanVien();
+			cout << "===========================================\n";
+		}
+		else {
+			cout << "Chuc nang khong hop le. Vui long chon lai.\n";
+			cout << "===========================================\n";
+		}
+	}
+	
+}
+int main() {
+	UI();
+	return 0;
 }
