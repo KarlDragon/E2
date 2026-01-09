@@ -159,6 +159,37 @@ void docDanhSachNhanVien() {
 
 	
 }
+// TODO: Tìm thông tin nhân viên theo mã (Câu 3)
+void timNhanVienTheoid() 
+{
+    int idCanTim, i = 1;
+    string line;
+    bool timThay = false;
+
+    cout << "Nhap ma so nhan vien can tim: ";
+    cin >> idCanTim;
+
+    ifstream file("DSNV.txt");
+
+    while (getline(file, line)) 
+    {
+        if (i == idCanTim) 
+        {
+            cout << "Thong tin nhan vien tim thay:" << endl;
+            cout << line << endl;
+            timThay = true;
+            break; 
+        }
+        i++;
+    }
+
+    if (!timThay) 
+    {
+        cout << "Khong tim thay nhan vien co ID: " << idCanTim << endl;
+    }
+
+    file.close();
+}
 // TODO : Xuat danh sanh nhan vien co thuc linh thap nhat
 void xuatNhanvienthuclinhthapnhat() {
 	ifstream fin("DSNV.txt");
@@ -196,9 +227,8 @@ int main() {
 //     suaNhanVien();
 	// docDanhSachNhanVien();
 	// sapXepNhanVien();
-	xuatNhanvienthuclinhthapnhat();
+	// timNhanVienTheoid();
+	// xuatNhanvienthuclinhthapnhat();
 	return 0;
 
 }
-
-
