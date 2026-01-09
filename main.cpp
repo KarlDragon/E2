@@ -227,7 +227,7 @@ int main() {
 //     suaNhanVien();
 	// docDanhSachNhanVien();
 	// sapXepNhanVien();
-	timNhanVienTheoid();
+	// timNhanVienTheoid();
 	// xuatNhanvienthuclinhthapnhat();
 	return 0;
 
