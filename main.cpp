@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+﻿#include <bits/stdc++.h>
 using namespace std;
 
 // TODO : nhap ds thong tin roi xuat ra file DSNV.txt
@@ -26,7 +26,7 @@ void timNhanVienTheoTen() {
     ifstream f("DSNV.txt");
     if (!f) {
         cout << "Khong mo duoc file DSNV.txt";
-        return 0;
+        return;
     }
 
     char tenTim[100];
@@ -78,7 +78,7 @@ void timNhanVienTheoTen() {
         cout << "Khong tim thay nhan vien";
 
     f.close();
-    return 0;
+    return;
 }
 // TODO : Sap xep danh sach nhan vien giam dan theo thuc linh roi ghi ra file DSNV_SAPXEP.txt
 void sapXepNhanVien() {
@@ -286,6 +286,7 @@ int main() {
 	// sapXepNhanVien();
 	// timNhanVienTheoid();
 	// xuatNhanvienthuclinhthapnhat();
+	 timNhanVienTheoTen();
 	return 0;
 
 }
