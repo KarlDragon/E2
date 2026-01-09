@@ -1,4 +1,4 @@
-﻿#include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 // TODO : nhap ds thong tin roi xuat ra file DSNV.txt
@@ -21,8 +21,78 @@ void nhapthongtin(){
 	fclose(stdout);
 
 }
+//TODO : tim thong tin theo ten nhan vien (khong phan biet hoa thuong) roi xuat ra man hinh
+void toLower(char s[]) {
+    for (int i = 0; s[i]; i++)
+        if (s[i] >= 'A' && s[i] <= 'Z')
+            s[i] += 32;
+}
 
+void spaceToUnderscore(char s[]) {
+    for (int i = 0; s[i]; i++)
+        if (s[i] == ' ')
+            s[i] = '_';
+}
 
+int main() {
+    const int MAX = 100;
+
+    int STT[MAX], tuoi[MAX], luong[MAX], tongLuong[MAX];
+    char ten[MAX][50], ngaySinh[MAX][20], email[MAX][50], sdt[MAX][20];
+
+    ifstream fin("DSNV.txt");
+    if (!fin) {
+        cout << "Khong mo duoc file DSNV.txt";
+        return 0;
+    }
+
+    int n = 0;
+
+    while (fin >> STT[n]
+               >> ten[n]
+               >> ngaySinh[n]
+               >> email[n]
+               >> sdt[n]
+               >> tuoi[n]
+               >> luong[n]
+               >> tongLuong[n]) {
+        n++;
+    }
+    fin.close();
+
+    char tenTim[50];
+    cout << "Nhap ten nhan vien: ";
+    cin.getline(tenTim, 50);
+
+    spaceToUnderscore(tenTim); 
+    toLower(tenTim);
+
+    bool timThay = false;
+
+    for (int i = 0; i < n; i++) {
+        char temp[50];
+        strcpy(temp, ten[i]);
+        toLower(temp);
+
+        if (strcmp(temp, tenTim) == 0) {
+            cout << "\nSTT: " << STT[i];
+            cout << "\nTen: " << ten[i];
+            cout << "\nNgay sinh: " << ngaySinh[i];
+            cout << "\nEmail: " << email[i];
+            cout << "\nSDT: " << sdt[i];
+            cout << "\nTuoi: " << tuoi[i];
+            cout << "\nLuong: " << luong[i];
+            cout << "\nTong luong: " << tongLuong[i];
+            timThay = true;
+            break;
+        }
+    }
+
+    if (!timThay)
+        cout << "\nKhong tim thay nhan vien";
+
+    fclos(stdout);
+}
 // TODO : Sap xep danh sach nhan vien giam dan theo thuc linh roi ghi ra file DSNV_SAPXEP.txt
 void sapXepNhanVien() {
 	string dsNoiDung[1000];
@@ -51,12 +121,12 @@ void sapXepNhanVien() {
 	for (int i = 0; i < count - 1; i++) {
 		for (int j = i + 1; j < count; j++) {
 			if (dsThucLinh[i] < dsThucLinh[j]) { 
-		
+
 				double tempLuong = dsThucLinh[i];
 				dsThucLinh[i] = dsThucLinh[j];
 				dsThucLinh[j] = tempLuong;
 
-			
+
 				string tempNoiDung = dsNoiDung[i];
 				dsNoiDung[i] = dsNoiDung[j];
 				dsNoiDung[j] = tempNoiDung;
@@ -150,14 +220,14 @@ void docDanhSachNhanVien() {
 		return;
 	}
 	string line;
-                   
+
 	while (getline(fin, line)) {     
 			cout << line << endl;         
-                    
+
 	}
 	fin.close();
 
-	
+
 }
 // TODO: Tìm thông tin nhân viên theo mã (Câu 3)
 void timNhanVienTheoid() 
