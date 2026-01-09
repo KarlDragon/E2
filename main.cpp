@@ -1,4 +1,4 @@
-﻿#include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 // TODO : nhap ds thong tin roi xuat ra file DSNV.txt
@@ -21,8 +21,65 @@ void nhapthongtin(){
 	fclose(stdout);
 
 }
+//TODO : tim thong tin theo ten nhan vien (khong phan biet hoa thuong) roi xuat ra man hinh
+void timNhanVienTheoTen() {
+    ifstream f("DSNV.txt");
+    if (!f) {
+        cout << "Khong mo duoc file DSNV.txt";
+        return 0;
+    }
 
+    char tenTim[100];
+    cout << "Nhap ten nhan vien: ";
+    cin.getline(tenTim, 100);
 
+    for (int i = 0; tenTim[i]; i++) {
+        if (tenTim[i] >= 'A' && tenTim[i] <= 'Z')
+            tenTim[i] += 32;
+    }
+
+    char line[300];
+    int timThay = 0;
+
+    while (f.getline(line, 300)) {
+        char copy[300];
+        strcpy(copy, line);
+
+        strtok(copy, " ");
+
+        char* ho = strtok(NULL, " ");
+        char* dem = strtok(NULL, " ");
+        char* ten = strtok(NULL, " ");
+
+        if (ho == NULL || dem == NULL || ten == NULL)
+            continue;
+
+        char hoTen[100];
+        strcpy(hoTen, ho);
+        strcat(hoTen, " ");
+        strcat(hoTen, dem);
+        strcat(hoTen, " ");
+        strcat(hoTen, ten);
+
+        for (int i = 0; hoTen[i]; i++) {
+            if (hoTen[i] >= 'A' && hoTen[i] <= 'Z')
+                hoTen[i] += 32;
+        }
+
+        if (strcmp(hoTen, tenTim) == 0) {
+            cout << "Thong tin nhan vien tim thay:\n";
+            cout << line << endl;
+            timThay = 1;
+            break;
+        }
+    }
+
+    if (!timThay)
+        cout << "Khong tim thay nhan vien";
+
+    f.close();
+    return 0;
+}
 // TODO : Sap xep danh sach nhan vien giam dan theo thuc linh roi ghi ra file DSNV_SAPXEP.txt
 void sapXepNhanVien() {
 	string dsNoiDung[1000];
@@ -51,12 +108,12 @@ void sapXepNhanVien() {
 	for (int i = 0; i < count - 1; i++) {
 		for (int j = i + 1; j < count; j++) {
 			if (dsThucLinh[i] < dsThucLinh[j]) { 
-		
+
 				double tempLuong = dsThucLinh[i];
 				dsThucLinh[i] = dsThucLinh[j];
 				dsThucLinh[j] = tempLuong;
 
-			
+
 				string tempNoiDung = dsNoiDung[i];
 				dsNoiDung[i] = dsNoiDung[j];
 				dsNoiDung[j] = tempNoiDung;
@@ -150,14 +207,14 @@ void docDanhSachNhanVien() {
 		return;
 	}
 	string line;
-                   
+
 	while (getline(fin, line)) {     
 			cout << line << endl;         
-                    
+
 	}
 	fin.close();
 
-	
+
 }
 // TODO: Tìm thông tin nhân viên theo mã (Câu 3)
 void timNhanVienTheoid() 
