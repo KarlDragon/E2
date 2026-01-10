@@ -40,7 +40,7 @@ void nhapthongtin(){
 			continue;
 		}
 	}
-		
+
 
 
 	ofstream fout("DSNV.txt");
@@ -151,7 +151,7 @@ void sapXepNhanVien() {
 
 	for (int i = 0; i < count - 1; i++) {
 		for (int j = i + 1; j < count; j++) {
-			if (dsThucLinh[i] < dsThucLinh[j]) { 
+			if (dsThucLinh[i] < dsThucLinh[j]) {
 
 				double tempLuong = dsThucLinh[i];
 				dsThucLinh[i] = dsThucLinh[j];
@@ -252,8 +252,8 @@ void docDanhSachNhanVien() {
 	}
 	string line;
 
-	while (getline(fin, line)) {     
-			cout << line << endl;         
+	while (getline(fin, line)) {
+			cout << line << endl;
 
 	}
 	fin.close();
@@ -261,7 +261,7 @@ void docDanhSachNhanVien() {
 
 }
 // TODO: Tìm thông tin nhân viên theo mã (Câu 3)
-void timNhanVienTheoid() 
+void timNhanVienTheoid()
 {
     int idCanTim, i = 1;
     string line;
@@ -272,19 +272,19 @@ void timNhanVienTheoid()
 
     ifstream file("DSNV.txt");
 
-    while (getline(file, line)) 
+    while (getline(file, line))
     {
-        if (i == idCanTim) 
+        if (i == idCanTim)
         {
             cout << "Thong tin nhan vien tim thay:" << endl;
             cout << line << endl;
             timThay = true;
-            break; 
+            break;
         }
         i++;
     }
 
-    if (!timThay) 
+    if (!timThay)
     {
         cout << "Khong tim thay nhan vien co ID: " << idCanTim << endl;
     }
@@ -385,7 +385,7 @@ void UI(){
 			cout << "===========================================\n";
 		}
 	}
-	
+
 }
 int main() {
 	UI();
