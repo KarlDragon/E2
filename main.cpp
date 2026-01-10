@@ -30,6 +30,10 @@ void nhapthongtin(){
 		}
 		try{
 			soNgaycong = stoi(arr[i][arrSize - 2]);
+			if (soNgaycong > 31) {
+				cout << "So ngay cong khong hop le. Vui long nhap lai." << endl;
+				continue;
+			}
 			luongNgay = stoi(arr[i][arrSize - 1]);
 			thucLinh = soNgaycong * luongNgay;
 			arr[i].push_back(to_string(thucLinh));
