@@ -185,6 +185,7 @@ void xoaNhanVien(){
 	ofstream fout("DSNV_XOA.txt");
 	while(getline(fin, line)){
 		if ( id == i ){
+		    i++;
 			continue;
 		}
 		else{
@@ -276,7 +277,6 @@ void suaNhanVien(){
 	        ofstream fout("DSNV_SUA.txt");
 	        while(getline(fin, line)){
 		    if ( id == i ){
-			   i++;
 			   fout<<i<<" "<<sua<<endl;
 	      	}
 	    	else{
