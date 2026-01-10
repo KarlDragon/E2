@@ -185,7 +185,6 @@ void xoaNhanVien(){
 	ofstream fout("DSNV_XOA.txt");
 	while(getline(fin, line)){
 		if ( id == i ){
-			i++;
 			continue;
 		}
 		else{
@@ -198,48 +197,95 @@ void xoaNhanVien(){
 
 }
 // TODO : Them thong tin cua 1 nhan vien roi ghi ds ra DSNV_THEM.txt
-void themNhanVien(){
-    int id;
-	string line,them;
-	cout <<"Nhap thong tin nhan vien moi: ";
-	getline(cin,them);
-	freopen("DSNV.txt", "r", stdin);
-	freopen("DSNV_THEM.txt","w",stdout);
-	while(getline(cin, line)){
-            cout<<line<<endl;
-	}
-	stringstream ss(line);
-	ss>>id;
-	cout<<id+1<<" "<<them;
-	fclose(stdin);
-	fclose(stdout);
 
+void themNhanVien(){
+    int id,n,i=1,arrSize, soNgaycong, luongNgay, thucLinh;
+    vector<string> nv;
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    string line,row,them;
+    while(true){
+            cout<<"Nhap thong tin nhan vien can them: ";
+            getline(cin,them);
+            stringstream ss(them);
+            nv.clear();
+            while(ss>>row){
+                    nv.push_back(row);
+            }
+            arrSize=nv.size();
+            if (arrSize<7){
+                    cout << "Thong tin nhan vien khong du. Vui long nhap lai."<<endl;
+                    continue;
+            }
+            try{
+
+                 soNgaycong= stoi(nv[arrSize-2]);
+                 if (soNgaycong>31){
+                    cout << "So ngay cong khong hop le. Vui long nhap lai."<<endl;
+            continue;}
+                 luongNgay = stoi(nv[arrSize-1]);
+                 thucLinh = soNgaycong * luongNgay;
+                 them+=" "+(to_string(thucLinh));
+                 break;
+            }
+            catch (invalid_argument&) { cout << "So ngay cong hoac luong ngay khong hop le. Vui long nhap lai." << endl; }
+            }
+            ifstream fin("DSNV.txt");
+            ofstream fout("DSNV_THEM.txt");
+            while(getline(fin, line)){
+                    fout << line << endl; i++;
+            }
+            fout<<i++<<" "<<them;
+            fin.close();
+            fout.close();
 }
 // TODO : Sua thong tin cua 1 nhan vien roi ghi ds ra DSNV_SUA.txt
 void suaNhanVien(){
-	int id,i = 1;
-	string line,sua;
-	cout << "Nhap ma so nhan vien can sua: ";
-	cin >> id;
-	cout <<"Sua thong tin thanh vien või ma "<<id<<": ";
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	getline(cin,sua);
-	freopen("DSNV.txt", "r", stdin);
-	freopen("DSNV_SUA.txt","w",stdout);
-	while(getline(cin, line)){
-		if ( id == i ){
-            cout<<i<<" "<<sua<<"\n";
-			i++;
+    int id,n,i=1,arrSize, soNgaycong, luongNgay, thucLinh;
+    cout<<"Nhap ID nhan vien can sua: ";
+    cin>>id;
+    vector<string> nv;
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    string line,row,sua;
+    while(true){
+            cout<<"Nhap thong tin nhan vien can sua: ";
+            getline(cin,sua);
+            stringstream ss(sua);
+            nv.clear();
+            while(ss>>row){
+                    nv.push_back(row);
+            }
+            arrSize=nv.size();
+            if (arrSize<7){
+                    cout << "Thong tin nhan vien khong du. Vui long nhap lai."<<endl;
+                    continue;
+            }
+            try{
 
-			continue;
-		}
-		else{
-			cout << line << endl;
-		}
-		i++;
-	}
-	fclose(stdin);
-	fclose(stdout);
+                 soNgaycong= stoi(nv[arrSize-2]);
+                 if (soNgaycong>31){
+                    cout << "So ngay cong khong hop le. Vui long nhap lai."<<endl;
+            continue;}
+                 luongNgay = stoi(nv[arrSize-1]);
+                 thucLinh = soNgaycong * luongNgay;
+                 sua+=" "+(to_string(thucLinh));
+                 break;
+            }
+            catch (invalid_argument&){ cout << "So ngay cong hoac luong ngay khong hop le. Vui long nhap lai." << endl; }
+            }
+            ifstream fin("DSNV.txt");
+	        ofstream fout("DSNV_SUA.txt");
+	        while(getline(fin, line)){
+		    if ( id == i ){
+			   i++;
+			   fout<<i<<" "<<sua<<endl;
+	      	}
+	    	else{
+		    	fout<<line<<endl;
+		    }
+		    i++;
+	        }
+	        fin.close();
+	        fout.close();
 
 }
 
