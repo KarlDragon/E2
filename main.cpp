@@ -127,9 +127,13 @@ void sapXepNhanVien() {
 	int count = 0;
 	string line;
 
-	if (freopen("DSNV.txt", "r", stdin) == NULL) return;
+	ifstream fin("DSNV.txt");
+	if (!fin) {
+		cout << "Khong the mo file DSNV.txt de doc." << endl;
+		return;
+	}
 
-	while (getline(cin, line) && count < 1000) {
+	while (getline(fin, line) && count < 1000) {
 		if (line.empty()) continue;
 
 		dsNoiDung[count] = line;
@@ -143,7 +147,7 @@ void sapXepNhanVien() {
 		}
 		count++;
 	}
-	fclose(stdin);
+	fin.close();
 
 	for (int i = 0; i < count - 1; i++) {
 		for (int j = i + 1; j < count; j++) {
@@ -161,12 +165,12 @@ void sapXepNhanVien() {
 		}
 	}
 
-
-	if (freopen("DSNV_SAPXEP.txt", "w", stdout) != NULL) {
+	ofstream fout("DSNV_SAPXEP.txt");
+	if (fout) {
 		for (int i = 0; i < count; i++) {
-			cout << dsNoiDung[i] << endl;
+			fout << dsNoiDung[i] << endl;
 		}
-		fclose(stdout);
+		fout.close();
 	}
 }
 
